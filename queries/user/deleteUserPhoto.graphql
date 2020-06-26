@@ -1,0 +1,10 @@
+mutation DeleteUserPhoto ($idPhoto: String!, $key: String!) {
+  deleteUserPhoto (idPhoto: $idPhoto, key: $key) {
+    id
+    key
+    filename
+    mimetype
+    encoding
+    url
+  }
+}

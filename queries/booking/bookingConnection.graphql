@@ -1,0 +1,33 @@
+query BookingConnection( $first: Int!, $skip: Int! ) {
+  bookingConnection( first: $first, skip: $skip ) {
+    pageInfo {
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    aggregate {
+      count
+    }
+    edges {
+      node {
+        id
+        startDate
+        endDate
+        noWhatsApp
+        address
+        message
+        status
+        userBooking {
+          id
+          name
+        }
+        items {
+          id
+          product {
+            id
+          }
+        }
+      }
+    }
+  }
+}

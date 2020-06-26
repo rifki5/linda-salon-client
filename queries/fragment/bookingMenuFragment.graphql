@@ -1,0 +1,22 @@
+fragment BookingMenu on User {
+  bookings {
+    id
+    startDate
+    endDate
+    noWhatsApp
+    address
+    message
+    items {
+      id
+      amount
+      product {
+        id
+        name
+        description
+        stock
+        price
+      }
+    }
+    status
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "presets": [
+    "next/babel",
+    "@zeit/next-typescript/babel"
+  ],
+  "plugins": [
+    "import-graphql",
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "components": "./components",
+          "utilities": "./utilities",
+          "lib": "./lib",
+          "types": "./types",
+          "local_state": "./local_state",
+          "queries": "./queries",
+          "schema": "./schema",
+          "layout": "./layout"
+        }
+      }
+    ]
+  ]
+}

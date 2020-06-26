@@ -1,0 +1,34 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "jsx": "preserve",
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["./components/*"],
+      "utilities/*": ["./utilities/*"],
+      "lib/*": ["./lib/*"],
+      "types/*": ["./types/*"],
+      "local_state/*": ["./local_state/*"],
+      "queries/*": ["queries/*"],
+      "schema/*": ["schema/*"],
+      "layout/*": ["layout/*"]
+    },
+    "lib": [
+      "dom",
+      "es2016"
+    ],
+  }
+}

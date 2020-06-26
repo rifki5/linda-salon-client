@@ -1,0 +1,21 @@
+query ProductsConnection ($first: Int!, $skip: Int!, $tag: String!) {
+  productsConnection (first: $first, skip: $skip, tag: $tag) {
+    edges {
+      node {
+        id
+        name
+        photo {
+          id
+          key
+          url
+        }
+        description
+        stock
+        price
+      }
+    }
+    aggregate {
+      count
+    }
+  }
+}

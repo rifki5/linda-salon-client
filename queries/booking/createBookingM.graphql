@@ -1,0 +1,24 @@
+mutation CreateBooking ($startDate: DateTime!, $endDate: DateTime!) {
+  createBooking(
+    startDate: $startDate,
+    endDate: $endDate
+  ) {
+    id
+    startDate
+    endDate
+    items {
+      id
+      amount
+      product {
+        id
+        name
+        description
+        price
+      }
+    }
+    message
+    noWhatsApp
+    address
+    status
+  }
+}

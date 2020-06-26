@@ -1,0 +1,29 @@
+mutation CreateProduct (
+  $name: String!,
+  $stock: Int!,
+  $price: Int!,
+  $description: String!,
+  $tag: String!,
+  $idPhotoProduct: ID
+) {
+  createProduct (
+    name: $name,
+    stock: $stock,
+    price: $price,
+    description: $description,
+    tag: $tag,
+    idPhotoProduct: $idPhotoProduct
+  ) {
+    id
+    name
+    stock
+    price
+    description
+    photo {
+      id
+      key
+      url
+    }
+    tag
+  }
+}

@@ -1,0 +1,22 @@
+query FilterProductByDateGiven ($startDate: DateTime!, $endDate: DateTime!, $first: Int!, $skip: Int!, $tag: String!) {
+  filterProductByDateGiven (startDate: $startDate, endDate: $endDate, first: $first, skip: $skip, tag: $tag) {
+    edges {
+      node {
+        id
+        name
+        tag
+        photo {
+          id
+          key
+          url
+        }
+        description
+        price
+        stock
+      }
+    }
+    aggregate {
+      count
+    }
+  }
+}

@@ -1,0 +1,7 @@
+fragment DataUserForProduct on User {
+  bookings {
+    id
+    startDate
+    endDate
+  }
+}

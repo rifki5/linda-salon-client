@@ -1,0 +1,19 @@
+query UsersConnection ($first: Int!, $skip: Int!, $role: Role!) {
+  usersConnection (first: $first, skip: $skip, role: $role) {
+    aggregate {
+      count
+    }
+    edges {
+      node {
+        id
+        name
+        email
+        photo {
+          id
+          key
+          url
+        }
+      }
+    }
+  }
+}

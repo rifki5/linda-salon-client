@@ -1,0 +1,10 @@
+mutation UploadUserPhoto($file: Upload) {
+  uploadUserPhoto(file: $file) {
+    id
+    key
+    filename
+    mimetype
+    encoding
+    url
+  }
+}

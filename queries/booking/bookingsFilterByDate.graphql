@@ -1,0 +1,9 @@
+query BookingsFilterByDate ($dateNow: DateTime!) {
+  bookingsFilterByDate (dateNow: $dateNow) {
+   date
+   data {
+     type
+     content
+   }
+  }
+}

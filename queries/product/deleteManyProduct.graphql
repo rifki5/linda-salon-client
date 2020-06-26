@@ -1,0 +1,5 @@
+mutation DeleteManyProduct($ids: [ID!]!) {
+  deleteManyProduct(ids: $ids) {
+    count
+  }
+}

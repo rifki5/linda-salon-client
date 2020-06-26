@@ -1,0 +1,20 @@
+mutation AddProductToBooking (
+  $idProduct: ID!,
+  $amount: Int!,
+  $idBooking: ID!
+) {
+  addProductToBooking(
+    idProduct: $idProduct,
+    amount: $amount,
+    idBooking: $idBooking
+  ) {
+    id
+    items {
+      id
+      amount
+      product {
+        id
+      }
+    }
+  }
+}

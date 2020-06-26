@@ -1,0 +1,9 @@
+fragment LoginMenu on User {
+  id
+  name
+  photo {
+    id
+    key
+    url
+  }
+}

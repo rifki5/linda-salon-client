@@ -1,0 +1,5 @@
+mutation DeleteManyBooking ($ids: [ID!]!) {
+  deleteManyBooking (ids: $ids) {
+    count
+  } 
+}

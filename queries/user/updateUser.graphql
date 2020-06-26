@@ -1,0 +1,10 @@
+mutation UpdateUser ($name: String!, $email: String!, $password: String, $whereId: ID!) {
+  updateUser (
+    name: $name,
+    email: $email,
+    password: $password,
+    whereId: $whereId,
+  ) {
+    id
+  }
+}

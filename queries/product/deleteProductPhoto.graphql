@@ -1,0 +1,5 @@
+mutation DeleteProductPhoto ($idPhoto: ID!, $key: String!) {
+  deleteProductPhoto (idPhoto: $idPhoto, key: $key) {
+    success
+  }
+}

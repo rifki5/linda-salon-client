@@ -1,0 +1,27 @@
+query SearchBookingsByUser ($idUser: ID!, $first: Int!, $skip: Int!) {
+  searchBookingsByUser (idUser: $idUser, first: $first, skip: $skip) {
+    edges {
+      node {
+        id
+      	startDate
+        endDate
+        noWhatsApp
+        address
+        message
+        status
+        items {
+          id
+          amount
+          product {
+            id
+            name
+            price
+          }
+        }
+      }
+    }
+    aggregate {
+      count
+    }
+  }
+}

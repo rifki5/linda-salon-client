@@ -1,0 +1,9 @@
+mutation UploadProductPhoto ($file: Upload!) {
+  uploadProductPhoto(
+    file: $file
+  ) {
+    id
+    key
+    url
+  }
+}

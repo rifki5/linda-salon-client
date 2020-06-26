@@ -1,0 +1,473 @@
+schema {
+  query: Query
+}
+
+mutation AddProductToBooking($idProduct: ID!, $amount: Int!, $idBooking: ID!) {
+  addProductToBooking(idProduct: $idProduct, amount: $amount, idBooking: $idBooking)  {
+    id
+    items  {
+      id
+      amount
+      product  {
+        id
+      }
+    }
+  }
+}
+
+query Booking($id: ID!) {
+  booking(id: $id)  {
+    id
+    startDate
+    endDate
+    noWhatsApp
+    address
+    message
+    status
+    userBooking  {
+      id
+      name
+      role
+    }
+    items  {
+      id
+      amount
+      product  {
+        id
+        name
+        price
+      }
+    }
+  }
+}
+
+query BookingConnection($first: Int!, $skip: Int!) {
+  bookingConnection(first: $first, skip: $skip)  {
+    pageInfo  {
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    aggregate  {
+      count
+    }
+    edges  {
+      node  {
+        id
+        startDate
+        endDate
+        noWhatsApp
+        address
+        message
+        status
+        userBooking  {
+          id
+          name
+        }
+        items  {
+          id
+          product  {
+            id
+          }
+        }
+      }
+    }
+  }
+}
+
+query BookingsFilterByDate($dateNow: DateTime!) {
+  bookingsFilterByDate(dateNow: $dateNow)  {
+    date
+    data  {
+      type
+      content
+    }
+  }
+}
+
+mutation CreateBooking($startDate: DateTime!, $endDate: DateTime!) {
+  createBooking(startDate: $startDate, endDate: $endDate)  {
+    id
+    startDate
+    endDate
+    items  {
+      id
+      amount
+      product  {
+        id
+        name
+        description
+        price
+      }
+    }
+    message
+    noWhatsApp
+    address
+    status
+  }
+}
+
+mutation DeleteBooking($id: ID!) {
+  deleteBooking(id: $id)  {
+    id
+  }
+}
+
+mutation DeleteManyBooking($ids: [ID!]!) {
+  deleteManyBooking(ids: $ids)  {
+    count
+  }
+}
+
+mutation RemoveItemFromBooking($idBooking: ID!, $idItem: ID!) {
+  removeItemFromBooking(idBooking: $idBooking, idItem: $idItem)  {
+    id
+    items  {
+      id
+    }
+  }
+}
+
+query SearchBookingsByUser($idUser: ID!, $first: Int!, $skip: Int!) {
+  searchBookingsByUser(idUser: $idUser, first: $first, skip: $skip)  {
+    edges  {
+      node  {
+        id
+        startDate
+        endDate
+        noWhatsApp
+        address
+        message
+        status
+        items  {
+          id
+          amount
+          product  {
+            id
+            name
+            price
+          }
+        }
+      }
+    }
+    aggregate  {
+      count
+    }
+  }
+}
+
+mutation SendBooking($idBooking: ID!, $address: String!, $noWhatsApp: String!, $message: String) {
+  sendBooking(idBooking: $idBooking, address: $address, noWhatsApp: $noWhatsApp, message: $message)  {
+    id
+    startDate
+    endDate
+    items  {
+      id
+      amount
+      product  {
+        id
+        name
+        description
+        price
+      }
+    }
+    message
+    noWhatsApp
+    address
+    status
+  }
+}
+
+mutation UpdateStatusBooking($status: BookingStatus!, $idBooking: ID!) {
+  updateStatusBooking(status: $status, idBooking: $idBooking)  {
+    id
+    startDate
+    endDate
+    noWhatsApp
+    address
+    message
+    status
+    userBooking  {
+      id
+      name
+      role
+    }
+    items  {
+      id
+      amount
+      product  {
+        id
+        name
+        price
+      }
+    }
+  }
+}
+
+fragment BookingMenu on User {
+  bookings  {
+    id
+    startDate
+    endDate
+    noWhatsApp
+    address
+    message
+    items  {
+      id
+      amount
+      product  {
+        id
+        name
+        description
+        stock
+        price
+      }
+    }
+    status
+  }
+}
+
+fragment DataUserForProduct on User {
+  bookings  {
+    id
+    startDate
+    endDate
+  }
+}
+
+fragment LoginMenu on User {
+  id
+  name
+  photo  {
+    id
+    key
+    url
+  }
+}
+
+mutation CreateProduct($name: String!, $stock: Int!, $price: Int!, $description: String!, $tag: String!, $idPhotoProduct: ID) {
+  createProduct(name: $name, stock: $stock, price: $price, description: $description, tag: $tag, idPhotoProduct: $idPhotoProduct)  {
+    id
+    name
+    stock
+    price
+    description
+    photo  {
+      id
+      key
+      url
+    }
+    tag
+  }
+}
+
+mutation DeleteManyProduct($ids: [ID!]!) {
+  deleteManyProduct(ids: $ids)  {
+    count
+  }
+}
+
+mutation DeleteProduct($id: ID!) {
+  deleteProduct(id: $id)  {
+    id
+  }
+}
+
+mutation DeleteProductPhoto($idPhoto: ID!, $key: String!) {
+  deleteProductPhoto(idPhoto: $idPhoto, key: $key)  {
+    success
+  }
+}
+
+query FilterProductByDateGiven($startDate: DateTime!, $endDate: DateTime!, $first: Int!, $skip: Int!, $tag: String!) {
+  filterProductByDateGiven(startDate: $startDate, endDate: $endDate, first: $first, skip: $skip, tag: $tag)  {
+    edges  {
+      node  {
+        id
+        name
+        tag
+        photo  {
+          id
+          key
+          url
+        }
+        description
+        price
+        stock
+      }
+    }
+    aggregate  {
+      count
+    }
+  }
+}
+
+query Product($id: ID!) {
+  product(id: $id)  {
+    id
+    name
+    stock
+    description
+    price
+    tag
+    photo  {
+      id
+      key
+      url
+    }
+  }
+}
+
+query ProductsConnection($first: Int!, $skip: Int!, $tag: String!) {
+  productsConnection(first: $first, skip: $skip, tag: $tag)  {
+    edges  {
+      node  {
+        id
+        name
+        photo  {
+          id
+          key
+          url
+        }
+        description
+        stock
+        price
+      }
+    }
+    aggregate  {
+      count
+    }
+  }
+}
+
+mutation UpdateProduct($name: String!, $stock: Int!, $price: Int!, $description: String!, $tag: ProductTag!, $whereId: ID!, $idPhotoProduct: ID) {
+  updateProduct(name: $name, stock: $stock, price: $price, description: $description, tag: $tag, whereId: $whereId, idPhotoProduct: $idPhotoProduct)  {
+    id
+    name
+    stock
+    price
+    description
+    photo  {
+      id
+      key
+      url
+    }
+    tag
+  }
+}
+
+mutation UploadProductPhoto($file: Upload!) {
+  uploadProductPhoto(file: $file)  {
+    id
+    key
+    url
+  }
+}
+
+mutation DeleteManyUser($ids: [ID!]!) {
+  deleteManyUser(ids: $ids)  {
+    count
+  }
+}
+
+mutation DeleteUser($id: ID!) {
+  deleteUser(id: $id)  {
+    id
+  }
+}
+
+mutation DeleteUserPhoto($idPhoto: String!, $key: String!) {
+  deleteUserPhoto(idPhoto: $idPhoto, key: $key)  {
+    id
+    key
+    filename
+    mimetype
+    encoding
+    url
+  }
+}
+
+mutation Login($email: String!, $password: String!) {
+  login(email: $email, password: $password)  {
+    token
+    user  {
+      id
+      name
+      email
+      role
+    }
+  }
+}
+
+query Me {
+  me  {
+    name
+    email
+    role
+    ...LoginMenu
+    ...BookingMenu
+    ...DataUserForProduct
+  }
+}
+
+mutation singUp($email: String!, $password: String!, $name: String!) {
+  signup(name: $name, email: $email, password: $password)  {
+    token
+    user  {
+      id
+      name
+      email
+      role
+    }
+  }
+}
+
+mutation UpdateUser($name: String!, $email: String!, $password: String, $whereId: ID!) {
+  updateUser(name: $name, email: $email, password: $password, whereId: $whereId)  {
+    id
+  }
+}
+
+mutation UploadUserPhoto($file: Upload) {
+  uploadUserPhoto(file: $file)  {
+    id
+    key
+    filename
+    mimetype
+    encoding
+    url
+  }
+}
+
+query User($id: ID!) {
+  user(id: $id)  {
+    id
+    name
+    email
+    photo  {
+      id
+      key
+      url
+    }
+  }
+}
+
+query UsersConnection($first: Int!, $skip: Int!, $role: Role!) {
+  usersConnection(first: $first, skip: $skip, role: $role)  {
+    aggregate  {
+      count
+    }
+    edges  {
+      node  {
+        id
+        name
+        email
+        photo  {
+          id
+          key
+          url
+        }
+      }
+    }
+  }
+}

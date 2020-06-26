@@ -1,0 +1,26 @@
+mutation SendBooking ($idBooking: ID!, $address: String!, $noWhatsApp: String!, $message: String) {
+  sendBooking (
+    idBooking: $idBooking
+    address: $address
+    noWhatsApp: $noWhatsApp
+    message: $message
+  ) {
+    id
+    startDate
+    endDate
+    items {
+      id
+      amount
+      product {
+        id
+        name
+        description
+        price
+      }
+    }
+    message
+    noWhatsApp
+    address
+    status
+  }
+}

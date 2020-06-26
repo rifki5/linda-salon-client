@@ -1,0 +1,14 @@
+mutation RemoveItemFromBooking (
+  $idBooking: ID!
+  $idItem: ID!
+) {
+  removeItemFromBooking(
+    idBooking: $idBooking
+    idItem: $idItem
+  ) {
+    id
+    items {
+      id
+    }
+  }
+}

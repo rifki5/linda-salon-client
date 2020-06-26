@@ -1,0 +1,25 @@
+mutation UpdateStatusBooking ($status: BookingStatus!, $idBooking: ID!) {
+  updateStatusBooking (status: $status, idBooking: $idBooking) {
+    id
+    startDate
+    endDate
+    noWhatsApp
+    address
+    message
+    status
+    userBooking {
+      id
+      name
+      role
+    }
+    items {
+      id
+      amount
+      product {
+        id
+        name
+        price
+      }
+    }
+  }
+}
