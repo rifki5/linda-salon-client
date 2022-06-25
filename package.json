@@ -61,7 +61,7 @@
     "next-images": "0.10.2",
     "next-optimized-images": "1.4.1",
     "next-with-apollo": "3.1.1",
-    "node-fetch": "2.2.0",
+    "node-fetch": "2.6.7",
     "persistgraphql": "0.3.11",
     "react": "16.4.1",
     "react-adopt": "0.6.0",
